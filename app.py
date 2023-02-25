@@ -24,7 +24,7 @@ import streamlit as st #web development
 #read csv file from a url
 dataset_url = "https://raw.githubusercontent.com/barrypmartin/medical/main/processed_cleveland_simple.csv"
 
-@st.cache_data()
+@st.experimental_memo()
 
 def get_data() -> pd.DataFrame:
     return pd.read_csv(dataset_url)
