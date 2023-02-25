@@ -24,7 +24,7 @@ import streamlit as st #web development
 #read csv file from a url
 dataset_url = "https://raw.githubusercontent.com/barrypmartin/medical/main/processed_cleveland_simple.csv"
 
-@st.experimental_memo()
+@st.cache_data()
 
 def get_data() -> pd.DataFrame:
     return pd.read_csv(dataset_url)
@@ -45,16 +45,16 @@ df = df[df["age"] == job_filter]
 
 # near real-time / live feed simulation
 for seconds in range(200):
-
-    df["age_new"] = df["age"] * np.random.choice(range(1, 5))
-    df["bldpress_new"] = df["restbldpress"] * np.random.choice(range(1, 5))
-
+                                #np.random.choice
+    df["age_new"] = df["age"] * np.mean(range(1, 5))
+    df["bldpress_new"] = df["restbldpress"] * np.mean(range(1, 5))
+                                              #np.random.choice
     # creating KPIs
     avg_age = np.mean(df["age_new"])
 
     count_married = int(
         df[(df["chol"] == "maxhrtrate")]["chol"].count()
-        + np.random.choice(range(1, 30))
+        + np.mean(range(1, 30))
     )
     
     height= np.mean(df["bldpress_new"])
