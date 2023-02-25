@@ -17,6 +17,7 @@ import numpy as np #probability functions
 import pandas as pd
 import plotly.express as px # interactive charts
 import streamlit as st #web development
+#import "https://github.com/barrypmartin/med/blob/pages/File%20Upload.py"
 
 
 
