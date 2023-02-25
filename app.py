@@ -100,6 +100,20 @@ with placeholder.container():
            st.markdown("### Detailed Data View")
            st.dataframe(df)
            time.sleep(1)
+          
+           st.sidebar.title("File Uploader")
+
+           # Use the file uploader widget to allow users to upload a file
+           file = st.sidebar.file_uploader("Upload a file", type=["csv"])
+
+           # Check if a file was uploaded by the user
+           if file is not None:
+               # Use pandas to read the CSV file
+               data = pd.read_csv(file)
+
+               # Display the data in a table
+               st.write("Here's the data you uploaded:")
+               st.write(data)
 
 
 
